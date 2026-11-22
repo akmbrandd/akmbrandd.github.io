@@ -143,7 +143,7 @@
   footer .logo-mark{color:#f2efea}
   .socials{display:flex;gap:14px;flex-wrap:wrap}
   .socials a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid #2a2a2e;color:#e7e3dc;padding:8px 14px;border-radius:999px}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:#f2efea;color:#0b0b0c;padding:12px 20px;border-radius:999px;font-size:14px;z-index:70;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none}
+  .toast{position:fixed;top:76px;left:50%;transform:translateX(-50%) translateY(-20px);background:#f2efea;color:#0b0b0c;padding:12px 20px;border-radius:999px;font-size:14px;z-index:70;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none}
   .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
   .follow{padding:48px 0;text-align:center;border-top:1px solid var(--line)}
   .follow h3{font-size:28px;margin-bottom:20px}
@@ -155,6 +155,20 @@
   .copy-btn{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
   .num{direction:ltr;unicode-bidi:embed}
   .pay-dot{width:10px;height:10px;border-radius:50%;background:#e60000;display:inline-block;flex:none}
+  .co{padding:18px 0 8px;display:flex;flex-direction:column;gap:12px}
+  .co h4{font-size:22px}
+  .fld{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--ink-2)}
+  .fld input,.fld select,.fld textarea{font:inherit;font-size:16px;font-weight:400;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 12px;width:100%}
+  .fld textarea{resize:vertical;min-height:84px}
+  .fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--ink)}
+  .fld select{appearance:none;-webkit-appearance:none}
+  .payopts{display:grid;gap:8px}
+  .payopt{text-align:start;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+  .payopt b{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--ink)}
+  .payopt small{font-weight:400;color:var(--muted);font-size:13px}
+  .payopt[aria-checked=true]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+  .btn.disabled{opacity:.55}
+  .drawer-foot .err{min-height:0}
 </style>
 </head>
 <body>
@@ -185,7 +199,7 @@
 <div class="notice">
   <div class="wrap">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
-    <span><span data-t="shipBar">Shipping: 30 EGP in Mansoura · 80–120 EGP to other governorates.</span><br><span class="pay"><span class="pay-dot"></span><span data-t="payBar">Payment via Vodafone Cash: 01066550696</span> <button class="copy-btn" id="copyVf" data-t="copy">Copy</button></span></span>
+    <span><span data-t="shipBar">Shipping: 30 EGP in Mansoura · 80–120 EGP to other governorates.</span><br><span class="pay"><span class="pay-dot"></span><span data-t="payBar">Pay by Vodafone Cash (01066550696) or cash on delivery</span> <button class="copy-btn" id="copyVf" data-t="copy">Copy</button></span></span>
   </div>
 </div>
 
@@ -201,7 +215,7 @@
   <div class="wrap info-grid">
     <div class="info-card"><h4 class="serif" data-t="i1t">1. Choose</h4><p data-t="i1p">Pick your hoodie, size, color and quantity. Add as many pieces as you like to your bag.</p></div>
     <div class="info-card"><h4 class="serif" data-t="i2t">2. Send on WhatsApp</h4><p data-t="i2p">Tap the WhatsApp button. Your order is written for you — just send it.</p></div>
-    <div class="info-card"><h4 class="serif" data-t="i3t">3. Delivery</h4><p data-t="i3p">Shipping is 30 EGP in Mansoura and 80–120 EGP elsewhere in Egypt. Pay via Vodafone Cash, and we deliver to your door.</p></div>
+    <div class="info-card"><h4 class="serif" data-t="i3t">3. Delivery</h4><p data-t="i3p">Shipping is 30 EGP in Mansoura and 80–120 EGP elsewhere in Egypt. Pay by Vodafone Cash or cash on delivery, and we deliver to your door.</p></div>
   </div>
 </section>
 
@@ -304,10 +318,10 @@ const T = {
     shipBar:"Shipping: 30 EGP in Mansoura · 80–120 EGP to other governorates.",
     collection:"The Hoodies", i1t:"1. Choose", i1p:"Pick your hoodie, size, color and quantity. Add as many pieces as you like to your bag.",
     i2t:"2. Send on WhatsApp", i2p:"Tap the WhatsApp button. Your order is written for you — just send it.",
-    i3t:"3. Delivery", i3p:"Shipping is 30 EGP in Mansoura and 80–120 EGP elsewhere in Egypt. Pay via Vodafone Cash, and we deliver to your door.",
-    footNote:"Winter Collection · Egypt", followT:"Follow AKM", payBar:"Payment via Vodafone Cash: 01066550696", payRow:"Payment", payVal:"Vodafone Cash 01066550696", msgPay:"Payment: Vodafone Cash to 01066550696 — I will send the transfer screenshot here.", copied:"Number copied", copy:"Copy", fit:"Baggy fit — sizes L & XL", yourBag:"Your bag", view:"View details", size:"Size", color:"Color", qty:"Quantity",
+    i3t:"3. Delivery", i3p:"Shipping is 30 EGP in Mansoura and 80–120 EGP elsewhere in Egypt. Pay by Vodafone Cash or cash on delivery, and we deliver to your door.",
+    footNote:"Winter Collection · Egypt", checkout:"Delivery details", fName:"Full name", fPhone:"Mobile number", fArea:"Delivery area", areaPick:"Choose area…", areaM:"Mansoura — 30 EGP", areaO:"Other governorate — 80–120 EGP", fGov:"Governorate / city", fAddr:"Full address (street, building, floor, apartment, landmark)", payTitle:"Payment method", payVf:"Vodafone Cash", payVfNote:"Transfer to 01066550696, then send the screenshot on WhatsApp.", payCod:"Cash on delivery", payCodNote:"Pay the courier when your order arrives.", total:"Total", reqErr:"Please fill in your name, mobile, area, address and payment method.", phoneErr:"Please enter a valid mobile number.", buyNow:"Buy now", mName:"Name", mPhone:"Mobile", mArea:"Area", mAddr:"Address", mPay:"Payment", mShip:"Shipping", mTotal:"Total", mVf:"Vodafone Cash to 01066550696 (I'll send the transfer screenshot here)", mCod:"Cash on delivery", mMans:"Mansoura", mShipO:"80–120 EGP (to be confirmed)", followT:"Follow AKM", payBar:"Pay by Vodafone Cash (01066550696) or cash on delivery", payRow:"Payment", payVal:"Vodafone Cash 01066550696", msgPay:"Payment: Vodafone Cash to 01066550696 — I will send the transfer screenshot here.", copied:"Number copied", copy:"Copy", fit:"Baggy fit — sizes L & XL", yourBag:"Your bag", view:"View details", size:"Size", color:"Color", qty:"Quantity",
     orderWa:"Order now on WhatsApp", addBag:"Add to bag", pickSize:"Please choose a size", pickColor:"Please choose a color",
-    shipNote:"+ shipping: 30 EGP in Mansoura, 80–120 EGP to other governorates. Payment via Vodafone Cash: 01066550696.", empty:"Your bag is empty.", subtotal:"Subtotal",
+    shipNote:"+ shipping: 30 EGP in Mansoura, 80–120 EGP to other governorates. Pay by Vodafone Cash or cash on delivery.", empty:"Your bag is empty.", subtotal:"Subtotal",
     shipping:"Shipping", shipTbd:"30 EGP Mansoura · 80–120 EGP elsewhere", sendBag:"Send order on WhatsApp", remove:"Remove",
     added:"Added to bag", new:"NEW",
     msgHi:"Hello AKM, I'd like to order:", msgSize:"Size", msgColor:"Color", msgQty:"Qty", msgSub:"Subtotal",
@@ -318,10 +332,10 @@ const T = {
     shipBar:"الشحن: ٣٠ ج.م داخل المنصورة · من ٨٠ لـ ١٢٠ ج.م لباقي المحافظات.",
     collection:"الهوديز", i1t:"١. اختار", i1p:"اختار الهودي والمقاس واللون والكمية. ضيف اللي انت عايزه في الشنطة.",
     i2t:"٢. ابعت على واتساب", i2p:"دوس على زرار واتساب، الطلب هيتكتب لوحده — ابعته بس.",
-    i3t:"٣. التوصيل", i3p:"الشحن ٣٠ ج.م في المنصورة، ومن ٨٠ لـ ١٢٠ ج.م لباقي مصر. الدفع فودافون كاش، ونوصلك لحد البيت.",
-    footNote:"كولكشن الشتاء · مصر", followT:"تابع AKM", payBar:"الدفع فودافون كاش على: 01066550696", payRow:"الدفع", payVal:"فودافون كاش 01066550696", msgPay:"الدفع: فودافون كاش على 01066550696 — هبعت صورة التحويل هنا.", copied:"تم نسخ الرقم", copy:"نسخ", fit:"قصة واسعة (Baggy) — مقاسات L و XL", yourBag:"شنطتك", view:"التفاصيل", size:"المقاس", color:"اللون", qty:"الكمية",
+    i3t:"٣. التوصيل", i3p:"الشحن ٣٠ ج.م في المنصورة، ومن ٨٠ لـ ١٢٠ ج.م لباقي مصر. الدفع فودافون كاش أو كاش عند الاستلام، ونوصلك لحد البيت.",
+    footNote:"كولكشن الشتاء · مصر", checkout:"بيانات التوصيل", fName:"الاسم بالكامل", fPhone:"رقم الموبايل", fArea:"منطقة التوصيل", areaPick:"اختار المنطقة…", areaM:"المنصورة — ٣٠ ج.م", areaO:"محافظة تانية — ٨٠–١٢٠ ج.م", fGov:"المحافظة / المدينة", fAddr:"العنوان بالتفصيل (الشارع، العمارة، الدور، الشقة، علامة مميزة)", payTitle:"طريقة الدفع", payVf:"فودافون كاش", payVfNote:"حوّل على 01066550696 وابعت صورة التحويل على واتساب.", payCod:"الدفع عند الاستلام", payCodNote:"ادفع للمندوب لما الأوردر يوصلك.", total:"الإجمالي النهائي", reqErr:"من فضلك اكتب الاسم والموبايل والمنطقة والعنوان واختار طريقة الدفع.", phoneErr:"من فضلك اكتب رقم موبايل صحيح.", buyNow:"اشتري دلوقتي", mName:"الاسم", mPhone:"الموبايل", mArea:"المنطقة", mAddr:"العنوان", mPay:"الدفع", mShip:"الشحن", mTotal:"الإجمالي", mVf:"فودافون كاش على 01066550696 (هبعت صورة التحويل هنا)", mCod:"الدفع عند الاستلام", mMans:"المنصورة", mShipO:"٨٠–١٢٠ ج.م (يتأكد)", followT:"تابع AKM", payBar:"الدفع فودافون كاش (01066550696) أو كاش عند الاستلام", payRow:"الدفع", payVal:"فودافون كاش 01066550696", msgPay:"الدفع: فودافون كاش على 01066550696 — هبعت صورة التحويل هنا.", copied:"تم نسخ الرقم", copy:"نسخ", fit:"قصة واسعة (Baggy) — مقاسات L و XL", yourBag:"شنطتك", view:"التفاصيل", size:"المقاس", color:"اللون", qty:"الكمية",
     orderWa:"اطلب الآن على واتساب", addBag:"أضف للشنطة", pickSize:"من فضلك اختار المقاس", pickColor:"من فضلك اختار اللون",
-    shipNote:"+ الشحن: ٣٠ ج.م في المنصورة، ٨٠–١٢٠ ج.م لباقي المحافظات. الدفع فودافون كاش: 01066550696.", empty:"الشنطة فاضية.", subtotal:"الإجمالي",
+    shipNote:"+ الشحن: ٣٠ ج.م في المنصورة، ٨٠–١٢٠ ج.م لباقي المحافظات. الدفع فودافون كاش أو كاش عند الاستلام.", empty:"الشنطة فاضية.", subtotal:"الإجمالي",
     shipping:"الشحن", shipTbd:"٣٠ ج.م المنصورة · ٨٠–١٢٠ ج.م باقي المحافظات", sendBag:"ابعت الطلب على واتساب", remove:"حذف",
     added:"اتضاف للشنطة", new:"جديد",
     msgHi:"أهلاً AKM، عايز أطلب:", msgSize:"المقاس", msgColor:"اللون", msgQty:"الكمية", msgSub:"الإجمالي",
@@ -410,12 +424,11 @@ function drawSheet(){
       <div><span class="label">${t("qty")}</span><div class="qty"><button data-q="-1">−</button><span>${cur.qty}</span><button data-q="1">+</button></div></div>
       <div class="err" id="err"></div>
       <div class="btns">
-        <a class="btn btn-wa" id="orderNow" href="#" target="_blank" rel="noopener">${waIcon()} ${t("orderWa")}</a>
+        <button class="btn btn-dark" id="buyNow">${t("buyNow")}</button>
         <button class="btn btn-line" id="addBag">${t("addBag")}</button>
       </div>
       <div class="ship-note">${t("shipNote")}</div>
     </div>`;
-  updateOrderLink();
 }
 function validate(){
   if(cur.size==null) return t("pickSize");
@@ -426,23 +439,69 @@ function lineText(item, n){
   const p = PRODUCTS.find(x=>x.id===item.id);
   return `${n}. ${p.name[lang]} (${p.id})\n   ${t("msgSize")}: ${item.size} | ${t("msgColor")}: ${p.colors[item.color][lang]} | ${t("msgQty")}: ${item.qty}\n   ${fmt(p.price*item.qty)}`;
 }
+let form = {name:"",phone:"",area:"",gov:"",addr:"",pay:""};
+try { form = Object.assign(form, JSON.parse(localStorage.getItem("akm-form")||"{}")); } catch(e){}
+const subtotal = () => bag.reduce((s,b)=>s+PRODUCTS.find(p=>p.id===b.id).price*b.qty,0);
+const numFmt = n => lang==="ar" ? n.toLocaleString("ar-EG") : n.toLocaleString("en-US");
+function shipText(){ return form.area==="m" ? fmt(30) : form.area==="o" ? `${numFmt(80)}–${numFmt(120)} ${SETTINGS.currency[lang]}` : "—"; }
+function totalText(){ const s=subtotal(); return form.area==="m" ? fmt(s+30) : form.area==="o" ? `${numFmt(s+80)}–${numFmt(s+120)} ${SETTINGS.currency[lang]}` : fmt(s); }
+function checkoutError(){
+  if(!form.name.trim() || !form.phone.trim() || !form.area || !form.addr.trim() || !form.pay || (form.area==="o" && !form.gov.trim())) return t("reqErr");
+  const digits = form.phone.replace(/[^0-9٠-٩+]/g,"");
+  if(digits.replace(/\D/g,"").length < 10 && digits.length < 10) return t("phoneErr");
+  return "";
+}
 function orderMessage(items){
-  const sub = items.reduce((s,i)=>s+PRODUCTS.find(p=>p.id===i.id).price*i.qty,0);
-  return [t("msgHi"), "", ...items.map((it,i)=>lineText(it,i+1)), "", `${t("msgSub")}: ${fmt(sub)}`, t("msgShip"), t("msgPay"), "", t("msgAddr"), ""].join("\n");
+  const area = form.area==="m" ? t("mMans") : form.gov.trim();
+  const ship = form.area==="m" ? fmt(30) : t("mShipO");
+  return [t("msgHi"), "", ...items.map((it,i)=>lineText(it,i+1)), "",
+    `${t("msgSub")}: ${fmt(subtotal())}`, `${t("mShip")}: ${ship}`, `${t("mTotal")}: ${totalText()}`, "",
+    `${t("mName")}: ${form.name.trim()}`, `${t("mPhone")}: ${form.phone.trim()}`, `${t("mArea")}: ${area}`, `${t("mAddr")}: ${form.addr.trim()}`, "",
+    `${t("mPay")}: ${form.pay==="vf" ? t("mVf") : t("mCod")}`].join("\n");
 }
-function updateOrderLink(){
-  const a = $("#orderNow"); if(!a) return;
-  if(validate()){ a.href = "#"; a.removeAttribute("target"); }
-  else { a.href = waLink(orderMessage([{id:cur.p.id,size:cur.size,color:cur.color,qty:cur.qty}])); a.target="_blank"; }
+function updateCheckout(){
+  const sh=$("#shipVal"), tt=$("#totalVal"), a=$("#sendOrder"), g=$("#govWrap");
+  if(!a) return;
+  sh.textContent = shipText(); tt.textContent = totalText();
+  g.style.display = form.area==="o" ? "" : "none";
+  document.querySelectorAll("[data-pay]").forEach(el => el.setAttribute("aria-checked", el.dataset.pay===form.pay));
+  const err = checkoutError();
+  a.classList.toggle("disabled", !!err);
+  a.href = err ? "#" : waLink(orderMessage(bag));
+  if(err) a.removeAttribute("target"); else a.target = "_blank";
 }
+function checkoutHTML(){
+  const v = k => esc(form[k]||"");
+  return `
+  <div class="co">
+    <h4 class="serif">${t("checkout")}</h4>
+    <label class="fld"><span>${t("fName")}</span><input id="fName" data-f="name" autocomplete="name" value="${v("name")}"></label>
+    <label class="fld"><span>${t("fPhone")}</span><input id="fPhone" data-f="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="01xxxxxxxxx" value="${v("phone")}"></label>
+    <label class="fld"><span>${t("fArea")}</span>
+      <select id="fArea" data-f="area">
+        <option value="" ${!form.area?"selected":""} disabled>${t("areaPick")}</option>
+        <option value="m" ${form.area==="m"?"selected":""}>${t("areaM")}</option>
+        <option value="o" ${form.area==="o"?"selected":""}>${t("areaO")}</option>
+      </select></label>
+    <label class="fld" id="govWrap"><span>${t("fGov")}</span><input id="fGov" data-f="gov" value="${v("gov")}"></label>
+    <label class="fld"><span>${t("fAddr")}</span><textarea id="fAddr" data-f="addr" rows="3" autocomplete="street-address">${v("addr")}</textarea></label>
+    <div class="fld"><span>${t("payTitle")}</span>
+      <div class="payopts" role="radiogroup">
+        <button type="button" class="payopt" role="radio" data-pay="vf" aria-checked="${form.pay==="vf"}"><b><span class="pay-dot"></span>${t("payVf")}</b><small>${t("payVfNote")}</small></button>
+        <button type="button" class="payopt" role="radio" data-pay="cod" aria-checked="${form.pay==="cod"}"><b>💵 ${t("payCod")}</b><small>${t("payCodNote")}</small></button>
+      </div>
+    </div>
+  </div>`;
+}
+function saveForm(){ try{ localStorage.setItem("akm-form", JSON.stringify(form)); }catch(e){} }
 function closeSheet(){ $("#overlay").classList.remove("show"); document.body.style.overflow=""; cur=null; }
 
 function saveBag(){ try{ localStorage.setItem("akm-bag", JSON.stringify(bag)); }catch(e){} }
 function addToBag(){
-  const e = validate(); if(e){ $("#err").textContent = e; return; }
+  const e = validate(); if(e){ $("#err").textContent = e; return false; }
   const ex = bag.find(b=>b.id===cur.p.id && b.size===cur.size && b.color===cur.color);
   if(ex) ex.qty += cur.qty; else bag.push({id:cur.p.id,size:cur.size,color:cur.color,qty:cur.qty});
-  saveBag(); renderBag(); closeSheet(); toast(t("added"));
+  saveBag(); renderBag(); closeSheet(); toast(t("added")); return true;
 }
 function renderBag(){
   bag = bag.filter(b=>PRODUCTS.some(p=>p.id===b.id));
@@ -455,13 +514,14 @@ function renderBag(){
         <div class="meta">${t("size")}: ${esc(b.size)} · ${esc(p.colors[b.color][lang])} · ×${b.qty}</div>
         <button class="rm" data-rm="${i}">${t("remove")}</button></div>
       <div style="font-weight:600">${fmt(p.price*b.qty)}</div>
-    </div>`; }).join("");
-  const sub = bag.reduce((s,b)=>s+PRODUCTS.find(p=>p.id===b.id).price*b.qty,0);
+    </div>`; }).join("") + checkoutHTML();
   $("#bagFoot").innerHTML = `
-    <div class="row"><span>${t("subtotal")}</span><span>${fmt(sub)}</span></div>
-    <div class="row" style="color:var(--muted)"><span>${t("shipping")}</span><span>${t("shipTbd")}</span></div>
-    <div class="row" style="color:var(--muted)"><span>${t("payRow")}</span><span class="pay"><span class="pay-dot"></span>${t("payVal")}</span></div>
-    <a class="btn btn-wa" href="${waLink(orderMessage(bag))}" target="_blank" rel="noopener">${waIcon()} ${t("sendBag")}</a>`;
+    <div class="row"><span>${t("subtotal")}</span><span>${fmt(subtotal())}</span></div>
+    <div class="row" style="color:var(--muted)"><span>${t("shipping")}</span><span id="shipVal"></span></div>
+    <div class="row total"><span>${t("total")}</span><span id="totalVal"></span></div>
+    <div class="err" id="coErr"></div>
+    <a class="btn btn-wa" id="sendOrder" href="#" rel="noopener">${waIcon()} ${t("sendBag")}</a>`;
+  updateCheckout();
 }
 function openBag(){ $("#drawer").classList.add("show"); $("#scrim").classList.add("show"); }
 function closeBag(){ $("#drawer").classList.remove("show"); $("#scrim").classList.remove("show"); }
@@ -480,11 +540,23 @@ $("#overlay").onclick = e => {
   else if(q){ cur.qty=Math.max(1,Math.min(20,cur.qty+ +q.dataset.q)); drawSheet(); }
   else if(im){ cur.img=+im.dataset.img; drawSheet(); }
   else if(e.target.closest("#addBag")) addToBag();
-  else if(e.target.closest("#orderNow")){ const err=validate(); if(err){ e.preventDefault(); $("#err").textContent=err; } }
+  else if(e.target.closest("#buyNow")){ if(addToBag()) openBag(); }
 };
 $("#copyVf").onclick = async () => { try { await navigator.clipboard.writeText("01066550696"); toast(t("copied")); } catch(e) { toast("01066550696"); } };
 $("#bagBtn").onclick = openBag; $("#closeBag").onclick = closeBag; $("#scrim").onclick = closeBag;
-$("#bagBody").onclick = e => { const r=e.target.closest("[data-rm]"); if(r){ bag.splice(+r.dataset.rm,1); saveBag(); renderBag(); } };
+$("#bagBody").onclick = e => {
+  const r=e.target.closest("[data-rm]"); if(r){ bag.splice(+r.dataset.rm,1); saveBag(); renderBag(); return; }
+  const p=e.target.closest("[data-pay]"); if(p){ form.pay=p.dataset.pay; saveForm(); updateCheckout(); $("#coErr").textContent=""; }
+};
+const onField = e => { const f=e.target.dataset && e.target.dataset.f; if(!f) return; form[f]=e.target.value; saveForm(); updateCheckout(); $("#coErr").textContent=""; };
+$("#bagBody").addEventListener("input", onField); $("#bagBody").addEventListener("change", onField);
+$("#bagFoot").onclick = e => {
+  const a=e.target.closest("#sendOrder"); if(!a) return;
+  const err=checkoutError();
+  if(err){ e.preventDefault(); $("#coErr").textContent=err;
+    const first=["fName","fPhone","fArea","fGov","fAddr"].map(id=>$("#"+id)).find(el=>el && el.offsetParent && !el.value.trim());
+    (first || document.querySelector(".payopts")).scrollIntoView({behavior:"smooth",block:"center"}); if(first) first.focus(); }
+};
 document.addEventListener("keydown", e => { if(e.key==="Escape"){ closeSheet(); closeBag(); } });
 
 applyLang();
